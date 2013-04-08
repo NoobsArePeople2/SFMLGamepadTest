@@ -9,77 +9,143 @@
 #include <iostream>
 #include <sstream>
 
+#include <vector>
+#include <string>
+
 int main()
 {
 	sf::RenderWindow win;
-	win.create(sf::VideoMode(800, 600, 32), "SFML Gamepad Test");
+	int width = 1024;
+	int height = 1024;
+	win.create(sf::VideoMode(width, height, 32), "SFML Game Pad Test");
 	win.setFramerateLimit(60);
 	sf::Event event;
 
-	bool connected = sf::Joystick::isConnected(0);
+	std::vector<bool> pads(4, false);
+	std::vector<std::vector<sf::Text> > gui;
+
+	sf::Font font = sf::Font();
+	font.loadFromFile("arial.ttf");
+
+	for (unsigned int i = 0; i < pads.size(); ++i) {
+		pads.at(i) = sf::Joystick::isConnected(i);
+
+		int x = i % 2 == 0 ? 0 : 0.25 * width;
+		x += i > 1 ? width * 0.5 : 0;
+		int y = 0;
+
+		std::vector<sf::Text> readout;
+
+		int fontSize = 18;
+		sf::Text left = sf::Text("", font, fontSize);
+		left.setPosition(x, y);
+
+		sf::Text right = sf::Text("", font, fontSize);
+		right.setPosition(x, y + 100);
+
+		sf::Text buttons = sf::Text("", font, fontSize);
+		buttons.setPosition(x, y + 300);
+
+		sf::Text dpad = sf::Text("", font, fontSize);
+		dpad.setPosition(x, y + 200);
+
+		readout.push_back(left);
+		readout.push_back(right);
+		readout.push_back(buttons);
+		readout.push_back(dpad);
+
+		gui.push_back(readout);
+	}
 
 	bool exit = false;
-	bool hasX, hasY, hasZ, hasR, hasU, hasV = false;
-
-	sf::Font font;
-	font.loadFromFile("arial.ttf");
-	sf::Text left("", font, 30);
-	sf::Text right("", font, 30);
-	right.setPosition(400, 0);
 
 	while (!exit) {
 		win.pollEvent(event);
 		if (event.type == sf::Event::Closed) {
-		   exit = true;
+			exit = true;
 		}
 
 		win.clear(sf::Color(0, 0, 0));
 
-		if (sf::Joystick::isConnected(0)) {
-			if (!connected) {
-				std::cout << "Joystick 0 connected!" << std::endl;
-				int buttonCount = sf::Joystick::getButtonCount(0);
-				std::cout << "Joystick 0 has '" << buttonCount << "' buttons" << std::endl;
-				connected = true;
+		unsigned int len = pads.size();
 
-				hasX = sf::Joystick::hasAxis(0, sf::Joystick::X);
-				hasY = sf::Joystick::hasAxis(0, sf::Joystick::Y);
-				hasZ = sf::Joystick::hasAxis(0, sf::Joystick::Z);
-				hasR = sf::Joystick::hasAxis(0, sf::Joystick::R);
-				hasU = sf::Joystick::hasAxis(0, sf::Joystick::U);
-				hasV = sf::Joystick::hasAxis(0, sf::Joystick::V);
+		for (unsigned int i = 0; i < len; ++i) {
+			bool connected = pads.at(i);
+			bool hasX, hasY, hasZ, hasR, hasU, hasV, hasPovX, hasPovY = false;
+
+			if (sf::Joystick::isConnected(i)) {
+				if (!connected) {
+//					std::cout << "Joystick " << i << " connected!" << std::endl;
+//					std::cout << "Joystick " << i << " has '" << sf::Joystick::getButtonCount(0) << "' buttons" << std::endl;
+					connected = true;
+
+					hasX    = sf::Joystick::hasAxis(i, sf::Joystick::X);
+					hasY    = sf::Joystick::hasAxis(i, sf::Joystick::Y);
+					hasZ    = sf::Joystick::hasAxis(i, sf::Joystick::Z);
+					hasR    = sf::Joystick::hasAxis(i, sf::Joystick::R);
+					hasU    = sf::Joystick::hasAxis(i, sf::Joystick::U);
+					hasV    = sf::Joystick::hasAxis(i, sf::Joystick::V);
+					hasPovX = sf::Joystick::hasAxis(i, sf::Joystick::PovX);
+					hasPovY = sf::Joystick::hasAxis(i, sf::Joystick::PovY);
+
+				}
+
+				float x    = hasX    ? sf::Joystick::getAxisPosition(i, sf::Joystick::X)    : 0.0f;
+				float y    = hasY    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Y)    : 0.0f;
+				float z    = hasZ    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Z)    : 0.0f;
+				float r    = hasR    ? sf::Joystick::getAxisPosition(i, sf::Joystick::R)    : 0.0f;
+				float u    = hasU    ? sf::Joystick::getAxisPosition(i, sf::Joystick::U)    : 0.0f;
+				float v    = hasV    ? sf::Joystick::getAxisPosition(i, sf::Joystick::V)    : 0.0f;
+				float povX = hasPovX ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovX) : 0.0f;
+				float povY = hasPovY ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovY) : 0.0f;
+
+				std::ostringstream stream;
+				stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
+				gui.at(i).at(0).setString(stream.str());
+				stream.str("");
+				stream.clear();
+
+				stream << "Axis R: " << r << "\nAxis U: " << u << "\nAxis V: " << v;
+				gui.at(i).at(1).setString(stream.str());
+				stream.str("");
+				stream.clear();
+
+				for (unsigned int j = 0; j < sf::Joystick::getButtonCount(i); ++j) {
+					stream << "Button " << j << " " << (sf::Joystick::isButtonPressed(i, j) ? "is pressed" : "not pressed") << "\n";
+				}
+
+				gui.at(i).at(2).setString(stream.str());
+				stream.str("");
+				stream.clear();
+
+				stream << "PovX: " << povX << "\nPovY: " << povY;
+				gui.at(i).at(3).setString(stream.str());
+				stream.str("");
+				stream.clear();
+
+			} else {
+				if (connected) {
+//					std::cout << "Joystick " << i << " disconnected :(" << std::endl;
+					pads.at(i) = false;
+					gui.at(i).at(0).setString("");
+					gui.at(i).at(1).setString("");
+					gui.at(i).at(2).setString("");
+					gui.at(i).at(3).setString("");
+				}
 			}
 
-			float x = hasX ? sf::Joystick::getAxisPosition(0, sf::Joystick::X) : 0.0f;
-			float y = hasY ? sf::Joystick::getAxisPosition(0, sf::Joystick::Y) : 0.0f;
-			float z = hasZ ? sf::Joystick::getAxisPosition(0, sf::Joystick::Z) : 0.0f;
-			float r = hasR ? sf::Joystick::getAxisPosition(0, sf::Joystick::R) : 0.0f;
-			float u = hasU ? sf::Joystick::getAxisPosition(0, sf::Joystick::U) : 0.0f;
-			float v = hasV ? sf::Joystick::getAxisPosition(0, sf::Joystick::V) : 0.0f;
-
-			std::ostringstream stream;
-			stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
-			left.setString(stream.str());
-			stream.seekp(0);
-			stream << "Axis R: " << r << "\nAxis U: " << u << "\nAxis V: " << v;
-			right.setString(stream.str());
-			stream.seekp(0);
-
-		} else {
-			if (connected) {
-				std::cout << "Joystick 0 disconnected :(" << std::endl;
-				connected = false;
-				hasX = hasY = hasZ = hasR = hasU = hasV = false;
-			}
+			win.draw(gui.at(i).at(0));
+			win.draw(gui.at(i).at(1));
+			win.draw(gui.at(i).at(2));
+			win.draw(gui.at(i).at(3));
 		}
 
-		win.draw(left);
-		win.draw(right);
 		win.display();
 	}
 
    win.close();
    return 0;
 }
+
 
 

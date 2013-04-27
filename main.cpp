@@ -12,6 +12,8 @@
 #include <vector>
 #include <string>
 
+#include "JoystickHelper.h"
+
 int main()
 {
 	sf::RenderWindow win;
@@ -75,6 +77,7 @@ int main()
 
 			if (sf::Joystick::isConnected(i)) {
 				if (!connected) {
+//					std::cout << "Joystick name: " << sf::Joystick::getProduct(i) << std::endl;
 //					std::cout << "Joystick " << i << " connected!" << std::endl;
 //					std::cout << "Joystick " << i << " has '" << sf::Joystick::getButtonCount(0) << "' buttons" << std::endl;
 					connected = true;
@@ -90,16 +93,19 @@ int main()
 
 				}
 
-				float x    = hasX    ? sf::Joystick::getAxisPosition(i, sf::Joystick::X)    : 0.0f;
-				float y    = hasY    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Y)    : 0.0f;
-				float z    = hasZ    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Z)    : 0.0f;
-				float r    = hasR    ? sf::Joystick::getAxisPosition(i, sf::Joystick::R)    : 0.0f;
-				float u    = hasU    ? sf::Joystick::getAxisPosition(i, sf::Joystick::U)    : 0.0f;
-				float v    = hasV    ? sf::Joystick::getAxisPosition(i, sf::Joystick::V)    : 0.0f;
-				float povX = hasPovX ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovX) : 0.0f;
-				float povY = hasPovY ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovY) : 0.0f;
+				float x    = hasX    ? sf::Joystick::getAxisPosition(i, sf::Joystick::X)    : -1.0f;
+				float y    = hasY    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Y)    : -1.0f;
+				float z    = hasZ    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Z)    : -1.0f;
+				float r    = hasR    ? sf::Joystick::getAxisPosition(i, sf::Joystick::R)    : -1.0f;
+				float u    = hasU    ? sf::Joystick::getAxisPosition(i, sf::Joystick::U)    : -1.0f;
+				float v    = hasV    ? sf::Joystick::getAxisPosition(i, sf::Joystick::V)    : -1.0f;
+				float povX = hasPovX ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovX) : -1.0f;
+				float povY = hasPovY ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovY) : -1.0f;
 
 				std::ostringstream stream;
+				//stream << "Name: " << sf::Joystick::getProduct(i) << "\n";
+//				stream << "Name: " << sf::Joystick::getName(i) << "\n";
+				stream << "Name: " << JoystickHelper::getName(i) << "\n";
 				stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
 				gui.at(i).at(0).setString(stream.str());
 				stream.str("");

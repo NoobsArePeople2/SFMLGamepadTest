@@ -2,6 +2,7 @@
 .project
 .settings/
 *.cbp
+*.cbp.*
 *.depend
 *.workspace
 *.exe

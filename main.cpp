@@ -6,8 +6,6 @@
 #include <vector>
 #include <string>
 
-#include "JoystickHelper.h"
-
 int main()
 {
 	unsigned int width = 1024;
@@ -97,7 +95,6 @@ int main()
 					float povY = hasPovY ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovY) : -1.0f;
 
 					std::ostringstream stream;
-					stream << "Name: " << JoystickHelper::getName(i) << "\n";
 					stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
 					gui.at(i).at(0).setString(stream.str());
 					stream.str("");

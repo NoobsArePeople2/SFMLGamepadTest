@@ -6,6 +6,10 @@
 *.depend
 *.workspace
 *.exe
+*.layout
+*.layout.*
 
 Debug/
 Release/
+
+paths.lua

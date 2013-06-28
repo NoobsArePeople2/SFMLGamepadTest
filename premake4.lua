@@ -1,5 +1,5 @@
-PATH_TO_SFML_LIB = { "E:/Dev/libs/SFML-sean-build/lib" }
-PATH_TO_SFML_INC = { "E:/Dev/libs/SFML-sean/include" }
+-- See "paths.lua.sample" for instructions on creating the file.
+dofile ("paths.lua")
 
 solution "SFML Gamepad Test"
   configurations { "Debug", "Release" }

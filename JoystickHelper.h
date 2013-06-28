@@ -1,10 +1,3 @@
-/*
- * JoystickHelper.h
- *
- *  Created on: Apr 26, 2013
- *      Author: Sean
- */
-
 #ifndef JOYSTICKHELPER_H_
 #define JOYSTICKHELPER_H_
 

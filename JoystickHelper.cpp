@@ -1,10 +1,3 @@
-/*
- * JoystickHelper.cpp
- *
- *  Created on: Apr 26, 2013
- *      Author: Sean
- */
-
 #include <windows.h>
 #include <sstream>
 #include <stdio.h>

@@ -1,6 +1,10 @@
 .cproject
 .project
 .settings/
+*.cbp
+*.depend
+*.workspace
+*.exe
 
 Debug/
 Release/

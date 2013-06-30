@@ -9,6 +9,10 @@
 *.layout
 *.layout.*
 
+*.xcodeproj
+*.xcworkspace
+*.DS_Store
+
 Debug/
 Release/
 

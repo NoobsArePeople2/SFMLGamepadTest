@@ -6,13 +6,14 @@
 #include <vector>
 #include <string>
 
+#include "ResourcePath.h"
+
 int main()
 {
 	unsigned int width = 1024;
 	unsigned int height = 768;
 	sf::RenderWindow win(sf::VideoMode(width, height, 32), "SFML Game Pad Test");
 	win.setFramerateLimit(60);
-	sf::Event event;
 
     // Loop values
     float accumulator = 0.0f;
@@ -25,10 +26,14 @@ int main()
     int numPads = 4;
     int fontSize = 14;
     std::vector<bool> pads(numPads, false);
-    std::vector<std::vector<sf::Text>> gui;
+    std::vector<std::vector<sf::Text> > gui;
 
     sf::Font font = sf::Font();
-    font.loadFromFile("arial.ttf");
+    if (!font.loadFromFile(resourcePath("arial.ttf")))
+    {
+        printf("Unable to load font!\n");
+        return 1;
+    }
 
     sf::Joystick::update();
     for (int i = 0; i < numPads; ++i)
@@ -88,43 +93,40 @@ int main()
                     bool hasPovX = sf::Joystick::hasAxis(i, sf::Joystick::PovX);
                     bool hasPovY = sf::Joystick::hasAxis(i, sf::Joystick::PovY);
 
-                    if (hasPovX && hasPovY)
+                    float x    = hasX    ? sf::Joystick::getAxisPosition(i, sf::Joystick::X)    : 0;
+                    float y    = hasY    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Y)    : 0;
+                    float z    = hasZ    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Z)    : 0;
+                    float r    = hasR    ? sf::Joystick::getAxisPosition(i, sf::Joystick::R)    : 0;
+                    float u    = hasU    ? sf::Joystick::getAxisPosition(i, sf::Joystick::U)    : 0;
+                    float v    = hasV    ? sf::Joystick::getAxisPosition(i, sf::Joystick::V)    : 0;
+                    float povX = hasPovX ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovX) : 0;
+                    float povY = hasPovY ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovY) : 0;
+
+                    std::ostringstream stream;
+                    stream << sf::Joystick::getName(i) << "\n";
+                    stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
+                    gui.at(i).at(0).setString(stream.str());
+                    stream.str("");
+                    stream.clear();
+
+                    stream << "Axis R: " << r << "\nAxis U: " << u << "\nAxis V: " << v;
+                    gui.at(i).at(1).setString(stream.str());
+                    stream.str("");
+                    stream.clear();
+
+                    for (unsigned int j = 0; j < sf::Joystick::getButtonCount(i); ++j)
                     {
-                        float x    = hasX    ? sf::Joystick::getAxisPosition(i, sf::Joystick::X)    : 0;
-                        float y    = hasY    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Y)    : 0;
-                        float z    = hasZ    ? sf::Joystick::getAxisPosition(i, sf::Joystick::Z)    : 0;
-                        float r    = hasR    ? sf::Joystick::getAxisPosition(i, sf::Joystick::R)    : 0;
-                        float u    = hasU    ? sf::Joystick::getAxisPosition(i, sf::Joystick::U)    : 0;
-                        float v    = hasV    ? sf::Joystick::getAxisPosition(i, sf::Joystick::V)    : 0;
-                        float povX = hasPovX ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovX) : 0;
-                        float povY = hasPovY ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovY) : 0;
-
-                        std::ostringstream stream;
-                        stream << sf::Joystick::getName(i) << "\n";
-                        stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
-                        gui.at(i).at(0).setString(stream.str());
-                        stream.str("");
-                        stream.clear();
-
-                        stream << "Axis R: " << r << "\nAxis U: " << u << "\nAxis V: " << v;
-                        gui.at(i).at(1).setString(stream.str());
-                        stream.str("");
-                        stream.clear();
-
-                        for (unsigned int j = 0; j < sf::Joystick::getButtonCount(i); ++j)
-                        {
-                            stream << "Button " << j << " " << (sf::Joystick::isButtonPressed(i, j) ? "is pressed" : "not pressed") << "\n";
-                        }
-
-                        gui.at(i).at(2).setString(stream.str());
-                        stream.str("");
-                        stream.clear();
-
-                        stream << "PovX: " << povX << "\nPovY: " << povY;
-                        gui.at(i).at(3).setString(stream.str());
-                        stream.str("");
-                        stream.clear();
+                        stream << "Button " << j << " " << (sf::Joystick::isButtonPressed(i, j) ? "is pressed" : "not pressed") << "\n";
                     }
+
+                    gui.at(i).at(2).setString(stream.str());
+                    stream.str("");
+                    stream.clear();
+
+                    stream << "PovX: " << povX << "\nPovY: " << povY;
+                    gui.at(i).at(3).setString(stream.str());
+                    stream.str("");
+                    stream.clear();
                 }
             }
         }

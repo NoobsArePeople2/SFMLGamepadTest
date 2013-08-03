@@ -22,10 +22,10 @@ elseif os.is("windows") then
 
 end
 
-solution "SFML Gamepad Test"
+solution "SFML_Gamepad_Test"
   configurations { "Debug", "Release" }
 
-  project "SFML Gamepad Test"
+  project "SFML_Gamepad_Test"
     kind(KIND)
     language "C++"
     files { "**.h", "**.cpp", "**.hpp", "**.c", "**.ttf" }

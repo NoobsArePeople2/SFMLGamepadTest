@@ -1,15 +1,12 @@
 //-------------------------------------------------------
-//
-// Resource Path for using SFML in Eclipse CDT.
-//
 // Uses CoreFoundation on Mac OS to return the proper
 // resource path for bundled applications
 //
 // Based on resourcePath.mm provided with the Xcode
 // templates for SFML. This version contains no
 // Objective-C code, allowing it to be compiled in
-// Eclipse so the file can be used regardless of platform
-// or development environment.
+// non-Xcode IDEs so the file can be used regardless of
+// platform or development environment.
 //
 //-------------------------------------------------------
 

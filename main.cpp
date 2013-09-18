@@ -73,10 +73,12 @@ int main()
             accumulator -= updateInterval;
             ++ticks;
             sf::Event event;
-            win.pollEvent(event);
-            if (event.type == sf::Event::Closed)
+            while (win.pollEvent(event))
             {
-                win.close();
+                if (event.type == sf::Event::Closed)
+                {
+                    win.close();
+                }
             }
 
             // Update loop
@@ -103,7 +105,9 @@ int main()
                     float povY = hasPovY ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovY) : 0;
 
                     std::ostringstream stream;
-                    stream << sf::Joystick::getName(i) << "\n";
+                    // Uncomment this if you are using an SFML version that supports
+                    // Joystick names. See: https://github.com/NoobsArePeople2/SFML
+                    // stream << sf::Joystick::getName(i) << "\n";
                     stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
                     gui.at(i).at(0).setString(stream.str());
                     stream.str("");

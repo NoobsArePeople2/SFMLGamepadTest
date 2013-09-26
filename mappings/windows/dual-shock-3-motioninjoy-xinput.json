@@ -1,0 +1,48 @@
+{
+    "desc": "SFML Button mappings for the Dual Shock 3 controller on Windows using the Motioninjoy drive set to XInput. Effectively this works like a 360 pad.",
+
+    "contributor": {
+        "name": "Sean Monahan",
+        "email": "hello@seanmonahan.org"
+    },
+
+    "buttons": {
+
+        "Cross": 0,
+        "Circle": 1,
+        "Square": 2,
+        "Triangle": 3,
+        "L1": 4,
+        "R2": 5,
+        "Select": 6,
+        "Start": 7,
+        "L3": 8,
+        "R3": 9,
+        "PS": "Not Available"
+
+    },
+
+    "axes": {
+
+        "_note_format": "X axes are described in the following format: 'Axis Name: min-value,max-value.",
+        "_note_sticks": "Using the format described on the horizontal axis, min-value corresponds with left, max-value with right. On the vertical axis, min-value with up, max-value with down.",
+        "_note_triggers": "Using the format described with triggers, min-value corresponds with the trigger being fully released (not pressed at all) and max-value with the trigger fully pressed.",
+
+        "Left Stick Horizontal": "X-axis: -100,100",
+        "Left Stick Vertical": "Y-axis: -100,100",
+        "Right Stick Horizontal": "U-axis: -100,100",
+        "Right Stick Vertical": "R-axis: -100,100",
+
+        "_note_360_triggers": "Using XInput the triggers share an axis, making it impossble to use both effectively. This is a limitation of DirectInput not SFML.",
+        "L2": "Z-axis: 0,100",
+        "R2": "Z-axis: 0,-100",
+
+        "_note_dpad": "Though they are digital buttons, the D-Pad is mapped to the PovX and PovY axes.",
+        "D-Pad Up": "PovX: 0,100",
+        "D-Pad Right": "PovY: 0,100",
+        "D-Pad Down": "PovX: 0,-100",
+        "D-Pad Left": "PovY: 0,-100"
+    }
+
+}
+

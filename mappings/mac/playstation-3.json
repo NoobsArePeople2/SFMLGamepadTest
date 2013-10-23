@@ -1,0 +1,45 @@
+{
+    "desc": "SFML Button mappings for the PS3 controller on Mac.",
+
+    "contributor": {
+        "name": "Sean Monahan",
+        "email": "hello@seanmonahan.org"
+    },
+
+    "buttons": {
+
+        "Cross": 14,
+        "Circle": 13,
+        "Square": 15,
+        "Triangle": 12,
+        "L1": 10,
+        "R1": 11,
+        "Select": 0,
+        "Start": 3,
+        "L2": 8,
+        "R2": 9,
+        "L3": 1,
+        "R3": 2,
+        "PS": 16,
+        "D-Pad Up": 4,
+        "D-Pad Right": 5,
+        "D-Pad Down": 6,
+        "D-Pad Left": 7
+
+    },
+
+    "axes": {
+
+        "_note_format": "X axes are described in the following format: 'Axis Name: min-value,max-value.",
+        "_note_sticks": "Using the format described on the horizontal axis, min-value corresponds with left, max-value with right. On the vertical axis, min-value with up, max-value with down.",
+        "_note_triggers": "Using the format described with triggers, min-value corresponds with the trigger being fully released (not pressed at all) and max-value with the trigger fully pressed.",
+
+        "Left Stick Horizontal": "X-axis: -100,100",
+        "Left Stick Vertical": "Y-axis: -100,100",
+        "Right Stick Horizontal": "Z-axis: -100,100",
+        "Right Stick Vertical": "R-axis: -100,100",
+
+    }
+
+}
+

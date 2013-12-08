@@ -1,15 +1,17 @@
 -- See "paths.lua.sample" for instructions on creating the file.
-dofile ("paths.lua")
+dofile ( "paths.lua" )
 
 LINKS = {}
 if os.is("macosx") then
 
     KIND       = "WindowedApp"
     LINKS      = { "sfml-graphics.framework", "sfml-window.framework", "sfml-system.framework", "CoreFoundation.framework" }
+    -- LINKS      = { "sfml-graphics-d", "sfml-window-d", "sfml-system-d", "CoreFoundation.framework" }
     PLATFORMS  = { "x32" }
     BUILD_OPTS = "-std=c++11 -stdlib=libc++"
     LINK_OPTS  = "-stdlib=libc++"
     DEFINES    = ""
+    POST_BUILD_CMDS = { "scripts/copy-res-mac.sh" }
 
 elseif os.is("windows") then
 
@@ -19,6 +21,7 @@ elseif os.is("windows") then
     BUILD_OPTS = ""
     LINK_OPTS  = ""
     DEFINES    = "SFML_STATIC"
+    POST_BUILD_CMDS = {}
 
 end
 
@@ -36,6 +39,8 @@ solution "SFML_Gamepad_Test"
     linkoptions(LINK_OPTS)
     defines(DEFINES)
     platforms(PLATFORMS)
+    postbuildcommands(POST_BUILD_CMDS)
+
 
     configuration "Debug"
 

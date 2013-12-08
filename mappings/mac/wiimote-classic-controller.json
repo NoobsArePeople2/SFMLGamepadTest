@@ -1,0 +1,43 @@
+{
+    "desc": "Wiimote Classic Controller on Mac with WJoy driver.",
+
+    "contributor": {
+        "name": "Sean Monahan",
+        "email": "hello@seanmonahan.org"
+    },
+
+    "buttons": {
+
+        "B": 14,
+        "A": 13,
+        "Y": 19,
+        "X": 18,
+        "L": 24,
+        "R": 25,
+        "LZ": 26,
+        "RZ": 27,
+        "+": 17,
+        "-": 15,
+        "Home": 16,
+        "D-Pad Up": 20,
+        "D-Pad Right": 23,
+        "D-Pad Down": 21,
+        "D-Pad Left": 22
+
+    },
+
+    "axes": {
+
+        "_note_format": "X axes are described in the following format: 'Axis Name: min-value,max-value.",
+        "_note_sticks": "Using the format described on the horizontal axis, min-value corresponds with left, max-value with right. On the vertical axis, min-value with up, max-value with down.",
+        "_note_triggers": "Using the format described with triggers, min-value corresponds with the trigger being fully released (not pressed at all) and max-value with the trigger fully pressed.",
+
+        "Left Stick Horizontal": "X-axis: -100,100",
+        "Left Stick Vertical": "Y-axis: -100,100",
+        "Right Stick Horizontal": "Z-axis: -100,100",
+        "Right Stick Vertical": "U-axis: -100,100",
+
+    }
+
+}
+

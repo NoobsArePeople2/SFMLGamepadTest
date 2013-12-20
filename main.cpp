@@ -107,7 +107,7 @@ int main()
                     std::ostringstream stream;
                     // Uncomment this if you are using an SFML version that supports
                     // Joystick names. See: https://github.com/NoobsArePeople2/SFML
-                    stream << sf::Joystick::getName(i) << "\n";
+                    stream << sf::Joystick::getName(i).toAnsiString() << "\n";
                     stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
                     gui.at(i).at(0).setString(stream.str());
                     stream.str("");

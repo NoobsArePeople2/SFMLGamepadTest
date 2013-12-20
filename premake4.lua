@@ -1,6 +1,28 @@
 -- See "paths.lua.sample" for instructions on creating the file.
 dofile ( "paths.lua" )
 
+-- return a new array containing the concatenation of all of its
+-- parameters. Scaler parameters are included in place, and array
+-- parameters have their values shallow-copied to the final array.
+-- Note that userdata and function values are treated as scalar.
+function array_concat(...)
+    local t = {}
+    for n = 1,select("#",...) do
+        local arg = select(n,...)
+        if type(arg)=="table" then
+            for _,v in ipairs(arg) do
+                t[#t+1] = v
+            end
+        else
+            t[#t+1] = arg
+        end
+    end
+    return t
+end
+
+INC  = array_concat ( SFML_INC, SFML_EXT_INC )
+LIB  = array_concat ( SFML_LIB, SFML_EXT_LIB )
+
 LINKS = {}
 if os.is("macosx") then
 
@@ -16,11 +38,11 @@ if os.is("macosx") then
 elseif os.is("windows") then
 
     KIND       = "ConsoleApp"
-    LINKS      = { "sfml-graphics-s-d", "sfml-window-s-d", "sfml-system-s-d" }
+    LINKS      = { "sfml-graphics-s-d", "sfml-window-s-d", "sfml-system-s-d", "jpeg", "glew", "freetype", "ws2_32", "gdi32", "opengl32", "winmm" }
     PLATFORMS  = {}
     BUILD_OPTS = ""
     LINK_OPTS  = ""
-    DEFINES    = "SFML_STATIC"
+    DEFINES    = { "GLEW_STATIC", "SFML_STATIC", "UNICODE" }
     POST_BUILD_CMDS = {}
 
 end
@@ -33,8 +55,8 @@ solution "SFML_Gamepad_Test"
     language "C++"
     files { "**.h", "**.cpp", "**.hpp", "**.c", "**.ttf" }
     links(LINKS)
-    libdirs(PATH_TO_SFML_LIB)
-    includedirs(PATH_TO_SFML_INC)
+    libdirs(LIB)
+    includedirs(INC)
     buildoptions(BUILD_OPTS)
     linkoptions(LINK_OPTS)
     defines(DEFINES)

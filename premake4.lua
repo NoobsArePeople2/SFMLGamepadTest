@@ -45,6 +45,16 @@ elseif os.is("windows") then
     DEFINES    = { "GLEW_STATIC", "SFML_STATIC", "UNICODE" }
     POST_BUILD_CMDS = {}
 
+elseif os.is("linux") then
+
+    KIND       = "ConsoleApp"
+    LINKS      = { "sfml-graphics-d", "sfml-window-d", "sfml-system-d" }
+    PLATFORMS  = {}
+    BUILD_OPTS = ""
+    LINK_OPTS  = ""
+    DEFINES    = { "SFML_STATIC" }
+    POST_BUILD_CMDS = {}
+
 end
 
 solution "SFML_Gamepad_Test"

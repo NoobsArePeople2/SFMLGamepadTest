@@ -38,10 +38,10 @@
         "Right Tigger": "Z-axis: 0,-100",
 
         "_note_dpad": "Though they are digital buttons, the D-Pad is mapped to the PovX and PovY axes.",
-        "D-Pad Up": "PovX: 0,100",
-        "D-Pad Right": "PovY: 0,100",
-        "D-Pad Down": "PovX: 0,-100",
-        "D-Pad Left": "PovY: 0,-100"
+        "D-Pad Up": "PovY: 0,100",
+        "D-Pad Right": "PovX: 0,100",
+        "D-Pad Down": "PovY: 0,-100",
+        "D-Pad Left": "PovX: 0,-100"
     }
 
 }

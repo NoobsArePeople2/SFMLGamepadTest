@@ -1,30 +1,31 @@
 {
-    "desc": "SFML Button mappings for the XBox 360 controller on Linux Manjaro.",
-
-    "info": {
-        "name": "Microsoft X-Box 360 pad",
-        "manufactuerID": 1118,
-        "productID": 654
-    },
+    "desc": "SFML Button mappings for the XBox 360 controller on Linux using the default xpad driver.",
 
     "contributor": {
         "name": "Sean Monahan",
         "email": "hello@seanmonahan.org"
     },
 
+    "id": {
+
+        "name": "",
+        "manufacturer_id": 1118,
+        "product_id": 654
+    },
+
     "buttons": {
 
-        "A": 0,
-        "B": 1,
-        "X": 2,
-        "Y": 3,
-        "LB": 4,
-        "RB": 5,
-        "Back": 6,
-        "Start": 7,
-        "Left Stick Press": 9,
-        "Right Stick Press": 10,
-        "Guide": 8
+        "a": 0,
+        "b": 1,
+        "x": 2,
+        "y": 3,
+        "left_bumper": 4,
+        "right_bumper": 5,
+        "back": 6,
+        "start": 7,
+        "left_stick_press": 9,
+        "right_stick_press": 10,
+        "guide": 8
 
     },
 
@@ -34,20 +35,20 @@
         "_note_sticks": "Using the format described on the horizontal axis, min-value corresponds with left, max-value with right. On the vertical axis, min-value with up, max-value with down.",
         "_note_triggers": "Using the format described with triggers, min-value corresponds with the trigger being fully released (not pressed at all) and max-value with the trigger fully pressed.",
 
-        "Left Stick Horizontal": "X-axis: -100,100",
-        "Left Stick Vertical": "Y-axis: -100,100",
-        "Right Stick Horizontal": "U-axis: -100,100",
-        "Right Stick Vertical": "V-axis: -100,100",
+        "left_stick_horizontal": "X-axis: -100,100",
+        "left_stick_vertical": "Y-axis: -100,100",
+        "right_stick_horizontal": "U-axis: -100,100",
+        "right_stick_vertical": "V-axis: -100,100",
 
         "_note_360_triggers": "On the 360 pad the triggers share an axis, making it impossble to use both effectively. This is a limitation of DirectInput not SFML.",
-        "Left Trigger": "Z-axis: -100,100",
-        "Right Tigger": "R-axis: -100,-100",
+        "left_trigger": "Z-axis: -100,100",
+        "right_trigger": "R-axis: -100,-100",
 
         "_note_dpad": "Though they are digital buttons, the D-Pad is mapped to the PovX and PovY axes.",
-        "D-Pad Up": "PovY: 0,-100",
-        "D-Pad Right": "PovX: 0,100",
-        "D-Pad Down": "PovY: 0,100",
-        "D-Pad Left": "PovX: 0,-100"
+        "dpad_up": "PovY: 0,-100",
+        "dpad_right": "PovX: 0,100",
+        "dpad_down": "PovY: 0,100",
+        "dpad_left": "PovX: 0,-100"
     }
 
 }

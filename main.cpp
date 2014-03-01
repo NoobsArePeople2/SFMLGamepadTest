@@ -106,12 +106,10 @@ int main()
                     float povY = hasPovY ? sf::Joystick::getAxisPosition(i, sf::Joystick::PovY) : 0;
 
                     std::ostringstream stream;
-                    // Uncomment this if you are using an SFML version that supports
-                    // Joystick names. See: https://github.com/NoobsArePeople2/SFML
-//                    printf("name: '%s'\n", sf::Joystick::getName(i).toAnsiString().c_str());
-                    stream << sf::Joystick::getName(i).toAnsiString() << "\n";
-                    stream << "Manufacturer ID: " << sf::Joystick::getManufacturerId(i) << "\n";
-                    stream << "Product ID: " << sf::Joystick::getProductId(i) << "\n";
+                    sf::Joystick::Identification joyId = sf::Joystick::getIdentification(i);
+                    stream << joyId.name.toAnsiString() << "\n";
+                    stream << "Manufacturer ID: " << joyId.manufacturerId << "\n";
+                    stream << "Product ID: " << joyId.productId << "\n";
                     stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
                     gui.at(i).at(0).setString(stream.str());
                     stream.str("");

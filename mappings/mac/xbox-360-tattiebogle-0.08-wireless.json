@@ -1,0 +1,54 @@
+{
+    "desc": "SFML Button mappings for the XBox 360 controller on Mac using the Tattiebogle 0.08 driver (http://tattiebogle.net/index.php/ProjectRoot/Xbox360Controller/OsxDriver).",
+
+    "contributor": {
+        "name": "Sean Monahan",
+        "email": "hello@seanmonahan.org"
+    },
+
+    "id": {
+
+        "name": "Wireless 360 Controller",
+        "manufacturer_id": 1118,
+        "product_id": 654
+    },
+
+    "buttons": {
+
+        "a": 0,
+        "b": 1,
+        "x": 2,
+        "y": 3,
+        "left_bumper": 4,
+        "right_bumper": 5,
+        "back": 9,
+        "start": 8,
+        "left_stick_press": 6,
+        "right_stick_press": 7,
+        "guide": 10,
+        "dpad_up": 11,
+        "dpad_right": 14,
+        "dpad_down": 12,
+        "dpad_left": 13
+
+    },
+
+    "axes": {
+
+        "_note_format": "X axes are described in the following format: 'Axis Name: min-value,max-value.",
+        "_note_sticks": "Using the format described on the horizontal axis, min-value corresponds with left, max-value with right. On the vertical axis, min-value with up, max-value with down.",
+        "_note_triggers": "Using the format described with triggers, min-value corresponds with the trigger being fully released (not pressed at all) and max-value with the trigger fully pressed.",
+
+        "left_stick_horizontal": "X-axis: -100,100",
+        "left_stick_vertical": "Y-axis: -100,100",
+        "right_stick_horizontal": "U-axis: -100,100",
+        "right_stick_vertical": "V-axis: -100,100",
+
+        "_note_360_triggers": "On the 360 pad the triggers share an axis, making it impossble to use both effectively. This is a limitation of DirectInput not SFML.",
+        "left_trigger": "Z-axis: -100,100",
+        "right_trigger": "R-axis: -10,-100"
+
+    }
+
+}
+

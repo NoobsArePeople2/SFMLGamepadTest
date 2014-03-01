@@ -1,0 +1,45 @@
+{
+    "desc": "Wiimote with Nunchuck on Mac with WJoy Driver v0.7.1.",
+
+    "contributor": {
+        "name": "Sean Monahan",
+        "email": "hello@seanmonahan.org"
+    },
+
+    "id": {
+
+        "name": "Wiimote",
+        "manufacturer_id": 0,
+        "product_id": 0
+    },
+
+    "buttons": {
+
+        "1": 9,
+        "2": 10,
+        "a": 4,
+        "b": 5,
+        "plus": 6,
+        "minus": 7,
+        "home": 8,
+        "c": 11,
+        "z": 12,
+        "dpad_up": 2,
+        "dpad_right": 1,
+        "dpad_down": 3,
+        "dpad_left": 0
+
+    },
+
+    "axes": {
+
+        "_note_format": "X axes are described in the following format: 'Axis Name: min-value,max-value.",
+        "_note_sticks": "Using the format described on the horizontal axis, min-value corresponds with left, max-value with right. On the vertical axis, min-value with up, max-value with down.",
+
+        "left_stick_horizontal": "X-axis: -100,100",
+        "left_stick_vertical": "Y-axis: -100,100"
+
+    }
+
+}
+

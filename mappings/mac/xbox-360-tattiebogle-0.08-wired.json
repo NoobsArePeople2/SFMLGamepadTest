@@ -6,23 +6,30 @@
         "email": "hello@seanmonahan.org"
     },
 
+    "id": {
+
+        "name": "Controller",
+        "manufacturer_id": 1118,
+        "product_id": 654
+    },
+
     "buttons": {
 
-        "A": 0,
-        "B": 1,
-        "X": 2,
-        "Y": 3,
-        "LB": 4,
-        "RB": 5,
-        "Back": 9,
-        "Start": 8,
-        "Left Stick Press": 6,
-        "Right Stick Press": 7,
-        "Guide": 10,
-        "D-Pad Up": 11,
-        "D-Pad Right": 14,
-        "D-Pad Down": 12,
-        "D-Pad Left": 13
+        "a": 0,
+        "b": 1,
+        "x": 2,
+        "y": 3,
+        "left_bumper": 4,
+        "right_bumper": 5,
+        "back": 9,
+        "start": 8,
+        "left_stick_press": 6,
+        "right_stick_press": 7,
+        "guide": 10,
+        "dpad_up": 11,
+        "dpad_right": 14,
+        "dpad_down": 12,
+        "dpad_left": 13
 
     },
 
@@ -32,14 +39,14 @@
         "_note_sticks": "Using the format described on the horizontal axis, min-value corresponds with left, max-value with right. On the vertical axis, min-value with up, max-value with down.",
         "_note_triggers": "Using the format described with triggers, min-value corresponds with the trigger being fully released (not pressed at all) and max-value with the trigger fully pressed.",
 
-        "Left Stick Horizontal": "X-axis: -100,100",
-        "Left Stick Vertical": "Y-axis: -100,100",
-        "Right Stick Horizontal": "U-axis: -100,100",
-        "Right Stick Vertical": "V-axis: -100,100",
+        "left_stick_horizontal": "X-axis: -100,100",
+        "left_stick_vertical": "Y-axis: -100,100",
+        "right_stick_horizontal": "U-axis: -100,100",
+        "right_stick_vertical": "V-axis: -100,100",
 
         "_note_360_triggers": "On the 360 pad the triggers share an axis, making it impossble to use both effectively. This is a limitation of DirectInput not SFML.",
-        "Left Trigger": "Z-axis: -100,100",
-        "Right Tigger": "R-axis: -10,-100"
+        "left_trigger": "Z-axis: -100,100",
+        "right_trigger": "R-axis: -10,-100"
 
     }
 

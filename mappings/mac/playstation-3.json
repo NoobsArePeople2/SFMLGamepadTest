@@ -6,25 +6,32 @@
         "email": "hello@seanmonahan.org"
     },
 
+    "id": {
+
+        "name": "PLAYSTATION(R)3 Controller",
+        "manufacturer_id": 1356,
+        "product_id": 616
+    },
+
     "buttons": {
 
-        "Cross": 14,
-        "Circle": 13,
-        "Square": 15,
-        "Triangle": 12,
-        "L1": 10,
-        "R1": 11,
-        "Select": 0,
-        "Start": 3,
-        "L2": 8,
-        "R2": 9,
-        "L3": 1,
-        "R3": 2,
-        "PS": 16,
-        "D-Pad Up": 4,
-        "D-Pad Right": 5,
-        "D-Pad Down": 6,
-        "D-Pad Left": 7
+        "cross": 14,
+        "circle": 13,
+        "square": 15,
+        "triangle": 12,
+        "l1": 10,
+        "r1": 11,
+        "select": 0,
+        "start": 3,
+        "l2": 8,
+        "l2": 9,
+        "l3": 1,
+        "l3": 2,
+        "ps": 16,
+        "dpad_up": 4,
+        "dpad_right": 5,
+        "dpad_down": 6,
+        "dpad_left": 7
 
     },
 
@@ -34,10 +41,10 @@
         "_note_sticks": "Using the format described on the horizontal axis, min-value corresponds with left, max-value with right. On the vertical axis, min-value with up, max-value with down.",
         "_note_triggers": "Using the format described with triggers, min-value corresponds with the trigger being fully released (not pressed at all) and max-value with the trigger fully pressed.",
 
-        "Left Stick Horizontal": "X-axis: -100,100",
-        "Left Stick Vertical": "Y-axis: -100,100",
-        "Right Stick Horizontal": "Z-axis: -100,100",
-        "Right Stick Vertical": "R-axis: -100,100",
+        "left_stick_horizontal": "X-axis: -100,100",
+        "left_stick_vertical": "Y-axis: -100,100",
+        "right_stick_horizontal": "Z-axis: -100,100",
+        "right_stick_vertical": "R-axis: -100,100",
 
     }
 

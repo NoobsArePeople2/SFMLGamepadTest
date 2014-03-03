@@ -108,7 +108,7 @@ int main()
                     std::ostringstream stream;
                     sf::Joystick::Identification joyId = sf::Joystick::getIdentification(i);
                     stream << joyId.name.toAnsiString() << "\n";
-                    stream << "Manufacturer ID: " << joyId.manufacturerId << "\n";
+                    stream << "Vendor ID: " << joyId.vendorId << "\n";
                     stream << "Product ID: " << joyId.productId << "\n";
                     stream << "Axis X: " << x << "\nAxis Y: " << y << "\nAxis Z: " << z;
                     gui.at(i).at(0).setString(stream.str());

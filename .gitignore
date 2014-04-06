@@ -17,3 +17,6 @@ Debug/
 Release/
 
 paths.lua
+
+test/
+bin-debug/

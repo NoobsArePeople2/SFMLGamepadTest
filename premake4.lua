@@ -41,7 +41,7 @@ elseif os.is("windows") then
     LINKS      = { "sfml-graphics-s-d", "sfml-window-s-d", "sfml-system-s-d", "jpeg", "glew", "freetype", "ws2_32", "gdi32", "opengl32", "winmm" }
     PLATFORMS  = {}
     BUILD_OPTS = "-g"
-    LINK_OPTS  = ""
+    LINK_OPTS  = "-static-libgcc -static-libstdc++"
     DEFINES    = { "GLEW_STATIC", "SFML_STATIC", "UNICODE" }
     POST_BUILD_CMDS = {}
 
